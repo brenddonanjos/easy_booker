@@ -13,11 +13,11 @@ load_dotenv()
 if not os.getenv("GOOGLE_API_KEY"):
     raise ValueError("GOOGLE_API_KEY não está definida")
 
-APP_NAME = os.getenv("APP_NAME") or "AgendadorInteligente"
+APP_NAME = os.getenv("APP_NAME") or "EasyBooker"
 
 app = FastAPI(
-    title="Assistente inteligente",
-    description="Assistente Inteligente com Cadeia de Agentes de IA para Agendamento e Gestão de Compromissos",
+    title="EasyBooker",
+    description="EasyBooker - Assistente Inteligente com Cadeia de Agentes de IA para Agendamento e Gestão de Compromissos",
     version="1.0.0",
 )
 

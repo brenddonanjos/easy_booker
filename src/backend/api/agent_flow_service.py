@@ -9,7 +9,7 @@ from agents.normalizer_agent.agent import normalizer_agent
 from google.genai.types import Content, Part
 from google.adk.runners import InMemoryRunner
 
-APP_NAME = os.getenv("APP_NAME") or "AgendadorInteligente"
+APP_NAME = os.getenv("APP_NAME") or "EasyBooker"
 class AgentFlowService:
     def __init__(self):
         self.stt_runner = InMemoryRunner(agent=stt_agent, app_name=APP_NAME)
