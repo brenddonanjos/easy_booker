@@ -1,8 +1,9 @@
-from fastapi import APIRouter, File, UploadFile, Response, status
+from datetime import datetime
+from zoneinfo import ZoneInfo
+from fastapi import APIRouter, File, UploadFile
 import json
 import os
 import uuid
-
 from fastapi.responses import JSONResponse
 
 from api.agent_flow_service import AgentFlowService
@@ -38,6 +39,8 @@ class AgentFlowController:
             if err:
                 raise Exception(f"Erro na transcrição do áudio: {err}")
 
+            now = datetime.now(ZoneInfo("America/Sao_Paulo"))
+            response_stt = f"Data atual: {now.strftime('%d/%m/%Y')}\nhorário atual: {now.strftime('%H:%M')}\n Texto transcrito: {response_stt}"
             response_npl, err = await self.service.execute_npl(
                 prompt=response_stt, user_id=user_id, session=session
             )

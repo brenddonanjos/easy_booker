@@ -36,6 +36,10 @@ google_auth_controller = GoogleAuthController()
 agent_flow_router_api = agent_flow_router(agent_flow_controller)
 google_auth_router_api = google_auth_router(google_auth_controller)
 
+@app.get("/")
+async def root():
+    return {"message": "EasyBooker API is running"}
+
 app.include_router(agent_flow_router_api)
 app.include_router(google_auth_router_api)
 

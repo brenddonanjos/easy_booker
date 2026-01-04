@@ -85,7 +85,7 @@ function RobotArea(props: RobotAreaProps) {
       case "sending":
         return "Estou registrando seu compromisso...";
       default:
-        return "Olá! Eu sou o Bot Agenda, me fale sobre seu compromisso, que eu irei agendar para você";
+        return "Olá! Eu sou o Booker. Me fale sobre seu compromisso, que eu agendo e te dou as melhores dicas";
     }
   };
 
@@ -96,7 +96,7 @@ function RobotArea(props: RobotAreaProps) {
   return (
     <>
       <div className="robot-section">
-        <h2>Bot Agenda</h2>
+        <h2>Easy Booker</h2>
         <img
           src={robotImage}
           alt="RobSom"
