@@ -1,27 +1,27 @@
 # Core Framework
-fastapi==0.115.5
-uvicorn[standard]==0.32.1
+fastapi==0.128.0
+uvicorn[standard]==0.40.0
 
 # Environment
-python-dotenv==1.0.1
+python-dotenv==1.2.1
 
 # Google Services
-google-adk==0.5.1
-google-api-python-client==2.154.0
-google-auth-httplib2==0.2.0
-google-auth-oauthlib==1.2.1
+google-adk==1.21.0
+google-api-python-client==2.187.0
+google-auth-httplib2==0.3.0
+google-auth-oauthlib==1.2.3
 
 # Audio Processing
-soundfile==0.12.1
-openai-whisper==20231117
+soundfile==0.13.1
+openai-whisper==20250625
 
 # HTTP & Async
-httpx==0.27.2
-requests==2.32.3
+httpx==0.28.1
+requests==2.32.5
 
 # MCP
-fastmcp==0.2.2
-mcp==1.1.2
+fastmcp==2.14.2
+mcp==0.2.0
 
 # File Upload
-python-multipart==0.0.20
+python-multipart==0.0.21
