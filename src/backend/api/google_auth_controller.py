@@ -26,11 +26,11 @@ class GoogleAuthController:
         except Exception as e:
             return {"error": f"Erro ao gerar URL de autenticação: {str(e)}"}
 
-    def google_callback(self, request: Request, user_id: str):
+    def google_callback(self, request: Request, state: str):
         """Callback do Google OAuth"""
         try:
             url = request.url
-            callback_google_auth(url, user_id)
+            callback_google_auth(url, state)
             return {
                 "message": "Autenticação realizada com sucesso! Você pode fechar esta aba.",
                 "authenticated": True,
@@ -50,8 +50,8 @@ def google_auth_router(controller: GoogleAuthController) -> APIRouter:
     async def get_url_auth(user_id: str):
         return controller.get_url_auth(user_id)
 
-    @router.get("/callback/{user_id}")
-    async def google_callback(request: Request, user_id: str):
-        return controller.google_callback(request, user_id)
+    @router.get("/callback")
+    async def google_callback(request: Request, state: str):
+        return controller.google_callback(request, state)
 
     return router
