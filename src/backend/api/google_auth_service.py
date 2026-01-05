@@ -49,6 +49,9 @@ def get_calendar_service(user_id: str):
 
 def callback_google_auth(url: str, user_id: str):
     """Callback do Google OAuth"""
+
+    os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+
     if user_id not in temp_flows:
         return {"error": "Sessão de autenticação expirada"}
 
