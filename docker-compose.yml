@@ -5,6 +5,8 @@ services:
       dockerfile: Dockerfile
     hostname: scheduler-backend
     container_name: scheduler-backend
+    env_file:
+      - .env
     expose:
       - 5000
     ports:
