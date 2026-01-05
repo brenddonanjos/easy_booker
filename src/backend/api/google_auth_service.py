@@ -74,7 +74,7 @@ def get_google_auth_url(user_id: str):
     flow = Flow.from_client_secrets_file(
         credentials_path,
         scopes=["https://www.googleapis.com/auth/calendar"],
-        redirect_uri=f"http://localhost:5000/auth/google/callback/{user_id}",
+        redirect_uri=f"http://34.133.230.126:5000/auth/google/callback/{user_id}",
     )
 
     auth_url, _ = flow.authorization_url(prompt="consent")
