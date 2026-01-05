@@ -23,12 +23,16 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://easybooker.djansantos.com.br",
+        "https://easybooker.djansantos.com.br",
+        "http://localhost:5173",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-# ROTAS 
+# ROTAS
 agent_flow_service = AgentFlowService()
 agent_flow_controller = AgentFlowController(agent_flow_service)
 google_auth_controller = GoogleAuthController()
@@ -36,9 +40,11 @@ google_auth_controller = GoogleAuthController()
 agent_flow_router_api = agent_flow_router(agent_flow_controller)
 google_auth_router_api = google_auth_router(google_auth_controller)
 
+
 @app.get("/")
 async def root():
     return {"message": "EasyBooker API is running"}
+
 
 app.include_router(agent_flow_router_api)
 app.include_router(google_auth_router_api)

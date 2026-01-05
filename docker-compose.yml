@@ -13,6 +13,9 @@ services:
       - 5000:5000
     networks:
       - scheduler-net
+    volumes:
+      - ./src/backend/access_tokens:/app/access_tokens
+      - ./src/backend/google_client_secret.json:/app/google_client_secret.json
     command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]
 
 
