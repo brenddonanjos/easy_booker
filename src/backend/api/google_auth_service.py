@@ -82,10 +82,10 @@ def get_google_auth_url(user_id: str):
     flow = Flow.from_client_secrets_file(
         credentials_path,
         scopes=["https://www.googleapis.com/auth/calendar"],
-        redirect_uri=f"{backend_url}/auth/google/callback/{user_id}",
+        redirect_uri=f"{backend_url}/auth/google/callback",
     )
 
-    auth_url, _ = flow.authorization_url(prompt="consent")
+    auth_url, _ = flow.authorization_url(prompt="consent", state=user_id)
 
     # Armazenar o flow temporariamente (em produção, use Redis/DB)
     temp_flows[user_id] = flow 
