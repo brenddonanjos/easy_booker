@@ -72,8 +72,7 @@ def get_google_auth_url(user_id: str):
 
     backend_url = os.getenv("BACKEND_URL", "http://localhost:5000")
     
-    if backend_url.startswith("http://"):
-        os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+    os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
     script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     print(f"script_dir: {script_dir}")
