@@ -3,3 +3,4 @@ __pycache__/
 google_client_secret.json
 token.json
 src/backend/access_tokens/*
+.env
