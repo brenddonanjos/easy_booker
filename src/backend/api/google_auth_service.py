@@ -3,6 +3,9 @@ from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
+from dotenv import load_dotenv
+
+load_dotenv()
 
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
@@ -66,7 +69,12 @@ def callback_google_auth(url: str, user_id: str):
 
 def get_google_auth_url(user_id: str):
     """Retorna a URL de autenticação do Google"""
-    os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+
+    backend_url = os.getenv("BACKEND_URL", "http://localhost:5000")
+    
+    if backend_url.startswith("http://"):
+        os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+
     script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     print(f"script_dir: {script_dir}")
     credentials_path = os.path.join(script_dir, "google_client_secret.json")
@@ -74,7 +82,7 @@ def get_google_auth_url(user_id: str):
     flow = Flow.from_client_secrets_file(
         credentials_path,
         scopes=["https://www.googleapis.com/auth/calendar"],
-        redirect_uri=f"http://localhost:5000/auth/google/callback/{user_id}",
+        redirect_uri=f"{backend_url}/auth/google/callback/{user_id}",
     )
 
     auth_url, _ = flow.authorization_url(prompt="consent")
