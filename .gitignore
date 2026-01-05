@@ -4,3 +4,6 @@ google_client_secret.json
 token.json
 src/backend/access_tokens/*
 .env
+src/frontend/node_modules/
+src/frontend/dist/
+src/frontend/.env
